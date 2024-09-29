@@ -2,16 +2,15 @@ import express from "express";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import cors from "cors";
-
 import postRoutes from "./routes/posts.js";
 
 const app = express();
 
-app.use("/posts", postRoutes);
-
 app.use(bodyParser.json({ limit: "10mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "10mb", extended: true }));
 app.use(cors());
+
+app.use("/posts", postRoutes);
 
 const CONNECTION_URL =
   "mongodb+srv://User123:User123@cluster0.ue0nz.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
